@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViralView AI Clips</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#080914;color:white}
+header{padding:18px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #24243b}
+.logo{font-size:21px;font-weight:bold;color:#a78bfa}
+.logo span{color:#38bdf8}
+nav a{color:#ddd;text-decoration:none;margin-left:14px;font-size:13px}
+.hero{text-align:center;padding:65px 18px 45px;background:radial-gradient(ellipse at top,#29205a,#080914 70%)}
+.tag{color:#38bdf8;font-size:13px;margin-bottom:18px}
+h1{font-size:38px;line-height:1.2;margin-bottom:18px}
+h1 span{color:#a78bfa}
+.hero p{color:#b9b9ca;max-width:600px;margin:auto;line-height:1.6}
+.container{width:90%;max-width:950px;margin:35px auto}
+.card{background:#121326;border:1px solid #303052;border-radius:17px;padding:23px;margin-bottom:22px}
+h2{font-size:23px;margin-bottom:12px}
+.muted{color:#aaaabe;font-size:14px;line-height:1.6}
+input[type=url]{width:100%;padding:15px;border-radius:9px;border:1px solid #454568;background:#090a17;color:white;margin:15px 0}
+button{border:0;border-radius:9px;padding:13px 18px;background:linear-gradient(90deg,#7c3aed,#2563eb);color:white;font-weight:bold;cursor:pointer}
+button:hover{opacity:.9}
+.upload{display:block;border:2px dashed #555078;padding:30px;text-align:center;border-radius:12px;margin:16px 0;cursor:pointer;color:#c4b5fd}
+input[type=file]{display:none}
+#status{margin-top:14px;color:#38bdf8;font-size:14px;overflow-wrap:anywhere}
+video{width:100%;max-height:300px;margin-top:15px;border-radius:10px;background:#000}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;margin-top:20px}
+.plan{background:#191a31;border:1px solid #39395e;padding:20px;border-radius:14px}
+.plan h3{color:#c4b5fd;margin-bottom:12px}
+.price{font-size:30px;font-weight:bold;margin:12px 0}
+.plan p{color:#bbb;font-size:14px;line-height:2}
+.plan button{margin-top:16px;width:100%}
+footer{text-align:center;color:#888;padding:30px;font-size:13px}
+@media(max-width:500px){h1{font-size:30px}header{padding:15px 4%}nav a{margin-left:7px;font-size:11px}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">ViralView <span>AI Clips</span></div>
+ <nav>
+  <a href="#create">Create</a>
+  <a href="#plans">Plans</a>
+ </nav>
+</header>
+
+<section class="hero">
+ <div class="tag">✦ YOUR AI VIDEO CLIPPING STUDIO</div>
+ <h1>Turn Long Videos Into<br><span>Viral Short Clips</span></h1>
+ <p>Create engaging short-form content for YouTube Shorts, Instagram Reels and more. Your video editing journey starts here.</p>
+</section>
+
+<main class="container">
+
+<section class="card" id="create">
+ <h2>🎬 Create Your Clips</h2>
+ <p class="muted">Choose a video from your device to preview it.</p>
+
+ <label class="upload" for="videoFile">
+  📁 Tap here to select your video
+  <br><small>MP4, MOV and other browser-supported formats</small>
+ </label>
+ <input type="file" id="videoFile" accept="video/*">
+ <div id="fileStatus" class="muted"></div>
+ <video id="preview" controls hidden></video>
+
+ <div style="margin-top:25px">
+  <h2>🔗 YouTube Video URL</h2>
+  <p class="muted">Paste a YouTube link. Only use videos you own or have permission to edit.</p>
+  <input type="url" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=...">
+  <button onclick="checkYoutube()">Check YouTube Link</button>
+ </div>
+ <div id="status"></div>
+</section>
+
+<section class="card">
+ <h2>⚡ How It Works</h2>
+ <p class="muted">
+  1. Select your video or enter a YouTube link.<br>
+  2. Choose the clips you want to create.<br>
+  3. AI processing will be connected in a future version.<br>
+  4. Download your finished short clips when processing is available.
+ </p>
+</section>
+
+<section id="plans">
+ <h2 style="text-align:center">Choose Your Plan</h2>
+ <p class="muted" style="text-align:center">Start free and upgrade when you need more.</p>
+ <div class="plans">
+  <div class="plan">
+   <h3>FREE</h3>
+   <div class="price">₹0 <small>/month</small></div>
+   <p>✓ 3 clips per month<br>✓ Basic captions<br>✓ 720p export<br>✓ Watermark</p>
+   <button onclick="choosePlan('Free')">Start Free</button>
+  </div>
+  <div class="plan">
+   <h3>BASIC</h3>
+   <div class="price">₹49 <small>/month</small></div>
+   <p>✓ 30 clips per month<br>✓ Auto captions<br>✓ 1080p export<br>✓ No watermark</p>
+   <button onclick="choosePlan('Basic')">Choose Basic</button>
+  </div>
+  <div class="plan">
+   <h3>PRO</h3>
+   <div class="price">₹99 <small>/month</small></div>
+   <p>✓ 100 clips per month<br>✓ Auto captions<br>✓ 1080p export<br>✓ Priority processing<br>✓ No watermark</p>
+   <button onclick="choosePlan('Pro')">Choose Pro</button>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ © 2026 ViralView AI Clips. All rights reserved.
+</footer>
+
+<script>
+const videoFile = document.getElementById('videoFile');
+const preview = document.getElementById('preview');
+
+videoFile.addEventListener('change', function(){
+ const file = this.files[0];
+ if(!file) return;
+ document.getElementById('fileStatus').textContent =
+  'Selected: ' + file.name;
+ preview.src = URL.createObjectURL(file);
+ preview.hidden = false;
+ document.getElementById('status').textContent =
+  'Video preview ready. AI clipping is not connected yet.';
+});
+
+function checkYoutube(){
+ const url = document.getElementById('youtubeUrl').value.trim();
+ const status = document.getElementById('status');
+ try{
+  const parsed = new URL(url);
+  const valid =
+   (parsed.hostname === 'youtube.com' ||
+    parsed.hostname === 'www.youtube.com' ||
+    parsed.hostname === 'm.youtube.com') &&
+    parsed.searchParams.has('v') ||
+   parsed.hostname === 'youtu.be';
+
+  status.textContent = valid
+   ? 'Link format looks valid. Video processing is not connected yet.'
+   : 'Please enter a valid YouTube video link.';
+ }catch(e){
+  status.textContent = 'Please enter a valid YouTube URL.';
+ }
+}
+
+function choosePlan(plan){
+ document.getElementById('status').textContent =
+  plan + ' plan selected. Online payments are not connected yet.';
+ document.getElementById('create').scrollIntoView({behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
